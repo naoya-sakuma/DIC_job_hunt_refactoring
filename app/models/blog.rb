@@ -1,3 +1,5 @@
 class Blog < ApplicationRecord
-  scope :latest, -> (number = 4){order(created_at: :desc).limit(number)}
+  include CommonModule
+  #validates_with BlogValidator
+  before_create BlogCallback.new
 end
